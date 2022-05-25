@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import './export.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  debugPrint(user_session);
+  final DbProvider db = DbProvider();
+  db.init();
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: '/',
     routes: {
       '/dashboard': (context) => const DashBoard(),
-      '/': ((context) => const MainForm())
+      '/': (context) =>user_session==''? const MainUser():const MainForm(),
+      '/user/signin': (context) => const SignIn(),
+      '/user/signup': (context) => const SignUp(),
+      '/main': ((context) => const MainForm())
     },
     home: null,
   ));

@@ -1,7 +1,5 @@
-// ignore_for_file: sized_box_for_whitespace
-
 import 'package:flutter/material.dart';
-import '../media.query.dart';
+import '../export.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -141,8 +139,8 @@ Widget dashBody(context) {
           ),
         ),
         bodyTwo(context),
-        Container(
-          height: height(context, 0.1),
+        SizedBox(
+          height: height(context, 0.072),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -290,7 +288,7 @@ Widget bodyTwo(context) {
           child: Padding(
             padding: const EdgeInsets.all(5),
             child: ListView.builder(
-                itemCount: 5,
+                itemCount: 7,
                 itemBuilder: (BuildContext context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(4),
@@ -316,16 +314,39 @@ Widget bodyTwo(context) {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: const [
-                              Text(
+                            children: [
+                              const Text(
                                 'Lundi,15 mai,2022 - 08:03',
                                 style: TextStyle(
                                     fontSize: 11, color: Colors.black38),
                               ),
-                              Text(
+                              const Text(
                                 'Hand sac women',
                                 style: TextStyle(fontWeight: FontWeight.w600),
                               ),
+                              Expanded(
+                                child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: const [
+                                      Text('Quantité (6)',
+                                          style: TextStyle(
+                                              color: Colors.orange,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400)),
+                                      Text('PU (600 FC)',
+                                          style: TextStyle(
+                                              color: Colors.green,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w400)),
+                                      Text('PT (3600 FC)',
+                                          style: TextStyle(
+                                              color: Colors.blue,
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w700)),
+                                    ]),
+                              )
                             ],
                           ),
                         ))

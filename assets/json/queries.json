@@ -1,0 +1,19 @@
+{
+   "database": "dbStock.db",
+   "queries": [
+      {
+         "user_table": "CREATE TABLE IF NOT EXISTS tUser(userid TEXT PRIMARY KEY NOT NULL, fullname TEXT, password TEXT, phone TEXT,email TEXT,role TEXT)",
+         "config_table": "CREATE TABLE IF NOT EXISTS tConfig(configId TEXT PRIMARY KEY NOT NULL,configName TEXT,configValue TEXT,configUserId TEXT, FOREIGN KEY (configUserId) REFERENCES tUser(userId))",
+         "exercice_table": "CREATE TABLE IF NOT EXISTS tExercice(exeId TEXT PRIMARY KEY NOT NULL,exeStart TEXT,exeEnd TEXT, exeStatus TEXT,exeName TEXT,exeUserId TEXT, FOREIGN KEY (exeUserId) REFERENCES tUser(userId))",
+         "devise_table": "CREATE TABLE IF NOT EXISTS tDevise(deviseId TEXT PRIMARY KEY NOT NULL,deviseName TEXT, deviceSymbol TEXT,deviseUserId TEXT, FOREIGN KEY (deviseUserId) REFERENCES tUser(userId))",
+         "category_table": "CREATE TABLE IF NOT EXISTS tCategory(catId TEXT PRIMARY KEY NOT NULL,categoryName TEXT,catUserId TEXT, FOREIGN KEY (catUserId) REFERENCES tUser(userId))",
+         "product_table": "CREATE TABLE IF NOT EXISTS tProducts(proId TEXT PRIMARY KEY NOT NULL,proName TEXT,proCatId TEXT,FOREIGN KEY (proCatId) REFERENCES tCategory(catId), proMark TEXT,provUserId TEXT, FOREIGN KEY (provUserId) REFERENCES tUser(userId))",
+         "peovider_table": "CREATE TABLE IF NOT EXISTS tProvider(provId TEXT PRIMARY KEY NOT NULL,provDate TEXT, provdateOp TEXT,provCost Text, provDevise TEXT,provUserId TEXT, FOREIGN KEY (provUserId) REFERENCES tUser(userId))",
+         "stock_table": "CREATE TABLE IF NOT EXISTS tStock(stockId TEXT PRIMARY KEY NOT NULL,stockProductId TEXT,FOREIGN KEY (stockProductId) REFERENCES tProducts(proId),stockProviderId TEXT, FOREIGN KEY (stockProviderId) REFERENCES tProvider(provId), stockCode TEXT,stockDevise Text, stockQte TEXT,stockPU TEXT,stockPT TEXT,stockDateOp TEXT,stockDateExp TEXT,stockLotNum TEXT,stockUserId TEXT, FOREIGN KEY (stockUserId) REFERENCES tUser(userId))",
+         "sell_table": "CREATE TABLE IF NOT EXISTS tSell(sellId TEXT PRIMARY KEY NOT NULL,sellStockId TEXT,FOREIGN KEY (sellStockId) REFERENCES tStock(stockId),sellDevise TEXT,sellFactureId TEXT, FOREIGN KEY (sellFactureId) REFERENCES tFacture(factureId),sellUnity TEXT,sellQty TEXT,sellPu Text, sellPT TEXT,sellDateOp TEXT)",
+         "facture_table": "CREATE TABLE IF NOT EXISTS tFacture(factureId TEXT PRIMARY KEY NOT NULL,facClientId TEXT,FOREIGN KEY (facClientId) REFERENCES tClient(clientId),facDateOp TEXT ,facDescription TEXT,facExeId TEXT, FOREIGN KEY (facExeId) REFERENCES tExercice(exeId),facUserId TEXT, FOREIGN KEY (facUserId) REFERENCES tUser(userId))",
+         "inventaty_table": "CREATE TABLE IF NOT EXISTS tInventory(invId TEXT PRIMARY KEY NOT NULL,invExeId TEXT,FOREIGN KEY (invExeId) REFERENCES tExercice(exeId),invProId TEXT,FOREIGN KEY (invProId) REFERENCES tProducts(proId),invTheory TEXT ,invPhysic TEXT,invDate TEXT,invOp TEXT,invUserId TEXT, FOREIGN KEY (invUserId) REFERENCES tUser(userId))",
+         "till_table": "CREATE TABLE IF NOT EXISTS tTill(tillId TEXT PRIMARY KEY NOT NULL,tillDevise TEXT,tillDate TEXT,tillDateOp TEXT,tillProvider TEXT,tillMount TEXT,tillExeId TEXT,FOREIGN KEY (tillExeId) REFERENCES tExercice(exeId),tillWording TEXT,tillUserId TEXT, FOREIGN KEY (tillUserId) REFERENCES tUser(userId))"
+      }
+   ]
+}
