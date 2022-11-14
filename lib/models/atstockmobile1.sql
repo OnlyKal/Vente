@@ -1,15 +1,15 @@
-CREATE TABLE IF NOT EXISTS `users` (`id`	INTEGER PRIMARY KEY AUTOINCREMENT, `name`	varchar ( 100 ) DEFAULT NULL,`username`	varchar ( 100 ) DEFAULT NOT NULL,`password`	varchar ( 50 ) DEFAULT NULL,`phone_number`	varchar ( 20 ) DEFAULT NULL,`role`	varchar ( 20 ) DEFAULT NULL);
+CREATE TABLE IF NOT EXISTS `users` (`id`	INTEGER PRIMARY KEY AUTOINCREMENT, `name`	varchar ( 100 ) DEFAULT NULL,`username`	varchar ( 100 ) DEFAULT NOT NULL,`password`	varchar ( 50 ) DEFAULT NULL,`phoneNumber`	varchar ( 20 ) DEFAULT NULL,`role`	varchar ( 20 ) DEFAULT NULL);
 
 
 CREATE TABLE IF NOT EXISTS `exircise` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`start_date`	TIMESTAMP ,`end_date`	TIMESTAMP,`Statut`	BOOLEAN NOT NULL DEFAULT 0);
 CREATE TABLE IF NOT EXISTS `config_general` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`name`	varchar ( 50 ) DEFAULT NULL,`value`	text);
 
-CREATE TABLE IF NOT EXISTS `etablishement` (`name`	varchar ( 100 ) DEFAULT NULL,`phone_number`	varchar ( 20 ) DEFAULT NULL,`email`	varchar ( 100 ) DEFAULT NULL,`description`	varchar ( 100 ) DEFAULT NULL);
+CREATE TABLE IF NOT EXISTS `etablishement` (`name`	varchar ( 100 ) DEFAULT NULL,`phoneNumber`	varchar ( 20 ) DEFAULT NULL,`email`	varchar ( 100 ) DEFAULT NULL,`description`	varchar ( 100 ) DEFAULT NULL);
 
 CREATE TABLE IF NOT EXISTS `unit_of_measure` (`id`	INTEGER PRIMARY KEY AUTOINCREMENT,`name`	varchar ( 100 ) DEFAULT NULL,`symbole`	varchar (5) DEFAULT NULL);
 CREATE TABLE IF NOT EXISTS `currencies` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`name`varchar ( 50 ) DEFAULT NULL,`symbole`varchar ( 50 ) DEFAULT NULL);
 
-CREATE TABLE IF NOT EXISTS `clients` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`name`	varchar ( 100 ) DEFAULT NULL,`adress`	varchar ( 255 ) DEFAULT NULL,`phone_number`	varchar ( 20 ) DEFAULT NULL);
+CREATE TABLE IF NOT EXISTS `clients` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`name`	varchar ( 100 ) DEFAULT NULL,`adress`	varchar ( 255 ) DEFAULT NULL,`phoneNumber`	varchar ( 20 ) DEFAULT NULL);
 
 CREATE TABLE IF NOT EXISTS `categories` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`name`	varchar ( 255 ) DEFAULT NULL);
 CREATE TABLE IF NOT EXISTS `product` (`id` INTEGER PRIMARY KEY AUTOINCREMENT,`name`	varchar ( 255 ) DEFAULT NULL,`description`	varchar ( 255 ) DEFAULT NULL,`id_categorie`	INTEGER );
